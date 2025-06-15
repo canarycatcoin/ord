@@ -480,6 +480,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d965446196e3b7decd44aa7ee49e31d630118f90ef12f97900f262eb915c951d"
 
 [[package]]
+name = "bech32"
+version = "0.11.0"
+source = "git+https://github.com/canarycatcoin/rust-bech32.git?tag=v0.11.2#ca22229e5e9bdafea3d03b51cd56f43ca98e6c21"
+
+[[package]]
 name = "bindgen"
 version = "0.69.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -505,11 +510,11 @@ dependencies = [
 [[package]]
 name = "bip322"
 version = "0.0.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f05fd969833f0181470a254c9aed7389537f3fe6068bc8d7bcd9afef1cc7a049"
+source = "git+https://github.com/canarycatcoin/bip322.git?tag=0.10.0#06b151723d056654b069b9c66b2719c359330938"
 dependencies = [
  "base64 0.22.1",
  "bitcoin",
+ "sha2",
  "snafu",
 ]
 
@@ -527,11 +532,10 @@ dependencies = [
 [[package]]
 name = "bitcoin"
 version = "0.32.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad8929a18b8e33ea6b3c09297b687baaa71fb1b97353243a3f1029fad5c59c5b"
+source = "git+https://github.com/canarycatcoin/rust-bitcoin?tag=bitcoin-0.32.13#187470a070aeed521dcbf6b2879fe8bdc864b4c4"
 dependencies = [
  "base58ck",
- "bech32",
+ "bech32 0.11.0 (git+https://github.com/canarycatcoin/rust-bech32.git?tag=v0.11.2)",
  "bitcoin-internals 0.3.0",
  "bitcoin-io",
  "bitcoin-units",
@@ -597,10 +601,21 @@ dependencies = [
 [[package]]
 name = "bitcoincore-rpc"
 version = "0.19.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aedd23ae0fd321affb4bbbc36126c6f49a32818dc6b979395d24da8c9d4e80ee"
+source = "git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.0#c065a8f8a1c78c240fa8e81fae1af95870c0dc0e"
 dependencies = [
- "bitcoincore-rpc-json",
+ "bitcoincore-rpc-json 0.19.0 (git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.0)",
+ "jsonrpc",
+ "log",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "bitcoincore-rpc"
+version = "0.19.0"
+source = "git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.2#3e61f69920c4c47a8ad022ef47a7c6c2db6c25f0"
+dependencies = [
+ "bitcoincore-rpc-json 0.19.0 (git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.2)",
  "jsonrpc",
  "log",
  "serde",
@@ -610,8 +625,17 @@ dependencies = [
 [[package]]
 name = "bitcoincore-rpc-json"
 version = "0.19.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d8909583c5fab98508e80ef73e5592a651c954993dc6b7739963257d19f0e71a"
+source = "git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.0#c065a8f8a1c78c240fa8e81fae1af95870c0dc0e"
+dependencies = [
+ "bitcoin",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "bitcoincore-rpc-json"
+version = "0.19.0"
+source = "git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.2#3e61f69920c4c47a8ad022ef47a7c6c2db6c25f0"
 dependencies = [
  "bitcoin",
  "serde",
@@ -2268,11 +2292,10 @@ checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
 
 [[package]]
 name = "miniscript"
-version = "12.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0760e92feaf4ee26bd2e616f557de64712bf1e75f3b1b218dfb475c0a84c7943"
+version = "13.0.0"
+source = "git+https://github.com/canarycatcoin/rust-miniscript?tag=12.3.4#0bb2e97f69dd894bf4637f08ec391d7127d5b388"
 dependencies = [
- "bech32",
+ "bech32 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "bitcoin",
 ]
 
@@ -2313,12 +2336,12 @@ version = "0.0.1"
 dependencies = [
  "base64 0.22.1",
  "bitcoin",
+ "bitcoincore-rpc 0.19.0 (git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.0)",
  "hex",
  "jsonrpc-core",
  "jsonrpc-derive",
  "jsonrpc-http-server",
  "ord",
- "ord-bitcoincore-rpc",
  "reqwest",
  "serde",
  "serde_json",
@@ -2582,7 +2605,7 @@ dependencies = [
  "bip322",
  "bip39",
  "bitcoin",
- "bitcoincore-rpc",
+ "bitcoincore-rpc 0.19.0 (git+https://github.com/canarycatcoin/rust-bitcoincore-rpc.git?tag=v0.22.2)",
  "boilerplate",
  "brotli",
  "chrono",
@@ -2638,30 +2661,6 @@ dependencies = [
  "tower-http",
  "unindent",
  "urlencoding",
-]
-
-[[package]]
-name = "ord-bitcoincore-rpc"
-version = "0.19.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a00065be964ca4b401bc998e473423b1c5e8dbffb9c30f206e83e651e605ef76"
-dependencies = [
- "jsonrpc",
- "log",
- "ord-bitcoincore-rpc-json",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "ord-bitcoincore-rpc-json"
-version = "0.19.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b521de9d7b3171464565f244207af17f6d1b54085d46dd43162cf56e2ef5a9e"
-dependencies = [
- "bitcoin",
- "serde",
- "serde_json",
 ]
 
 [[package]]

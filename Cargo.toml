@@ -29,7 +29,7 @@ rust-version = "1.81.0"
 
 [workspace.dependencies]
 base64 = "0.22.0"
-bitcoin = { version = "0.32.5", features = ["rand"] }
+bitcoin = { git = "https://github.com/canarycatcoin/rust-bitcoin", tag = "bitcoin-0.32.13", features = ["rand"] }
 colored = "3"
 derive_more = { version = "1.0.0", features = ["display", "from_str"] }
 hex = "0.4.3"
@@ -47,10 +47,10 @@ anyhow = { version = "1.0.90", features = ["backtrace"] }
 axum = { version = "0.8.1", features = ["http2"] }
 axum-server = "0.7.1"
 base64.workspace = true
-bip322 = "0.0.9"
+bip322 = { git = "https://github.com/canarycatcoin/bip322.git", tag = "0.10.0" }
 bip39 = "2.0.0"
 bitcoin.workspace = true
-bitcoincore-rpc = "0.19.0"
+bitcoincore-rpc = { git = "https://github.com/canarycatcoin/rust-bitcoincore-rpc.git", tag = "v0.22.2" }
 boilerplate = { version = "1.0.0", features = ["axum"] }
 brotli = "8.0.1"
 chrono = { version = "0.4.19", features = ["serde"] }
@@ -74,7 +74,7 @@ log = "0.4.14"
 mime = "0.3.16"
 mime_guess = "2.0.4"
 minicbor = { version = "1.0.0", features = ["alloc", "derive"] }
-miniscript = "12.0.0"
+miniscript = { git = "https://github.com/canarycatcoin/rust-miniscript", tag = "12.3.4" }
 mp4 = "0.14.0"
 ordinals = { version = "0.0.15", path = "crates/ordinals" }
 redb = "2.4.0"
