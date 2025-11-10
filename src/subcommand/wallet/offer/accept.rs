@@ -149,7 +149,7 @@ impl Accept {
     Ok(Some(Box::new(Output { txid })))
   }
 
-  fn psbt_signatures(psbt: &Psbt) -> Result<Vec<Option<Signature>>> {
+  fn psbt_signatures(psbt: &Psbt) -> Result<Vec<Option<Signature<'_>>>> {
     psbt
       .inputs
       .iter()
@@ -164,7 +164,7 @@ impl Accept {
       .collect()
   }
 
-  fn tx_signatures(tx: &Transaction) -> Result<Vec<Option<Signature>>> {
+  fn tx_signatures(tx: &Transaction) -> Result<Vec<Option<Signature<'_>>>> {
     tx.input
       .iter()
       .map(|input| {
