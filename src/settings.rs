@@ -444,6 +444,7 @@ impl Settings {
         Ok(blockchain_info) => {
           break match blockchain_info.chain.to_string().as_str() {
             "bitcoin" => Chain::Mainnet,
+            "canarycatcoin" => Chain::Mainnet,
             "regtest" => Chain::Regtest,
             "signet" => Chain::Signet,
             "testnet" => Chain::Testnet,
